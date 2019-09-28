@@ -1,0 +1,22 @@
+<resources>
+    <declare-styleable name="ImageViewE">
+        <!-- Round as circle. -->
+        <attr name="roundAsCircle" format="boolean" />
+        <!-- Rounded corner radius. Ignored if roundAsCircle is used. -->
+        <attr name="roundedCornerRadius" format="dimension" />
+        <!-- Round the top-left corner. Ignored if roundAsCircle is used. -->
+        <attr name="roundTopLeft" format="boolean" />
+        <!-- Round the top-right corner. Ignored if roundAsCircle is used. -->
+        <attr name="roundTopRight" format="boolean" />
+        <!-- Round the bottom-right corner. Ignored if roundAsCircle is used. -->
+        <attr name="roundBottomRight" format="boolean" />
+        <!-- Round the bottom-left corner. Ignored if roundAsCircle is used. -->
+        <attr name="roundBottomLeft" format="boolean" />
+        <!-- Rounding border width-->
+        <attr name="borderWidth" format="dimension" />
+        <!-- Rounding border color -->
+        <attr name="borderColor" format="color" />
+        <attr name="placeholderImage" format="color|reference" />
+        <attr name="fadeDuration" format="integer" />
+    </declare-styleable>
+</resources>

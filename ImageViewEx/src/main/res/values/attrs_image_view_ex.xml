@@ -1,0 +1,22 @@
+<resources>
+    <declare-styleable name="ImageViewEx">
+        <!-- Round as circle. -->
+        <attr name="imageViewEx_asCircle" format="boolean" />
+        <!-- Rounded corner radius. Ignored if imageViewEx_asCircle is used. -->
+        <attr name="imageViewEx_roundCornerRadius" format="dimension" />
+        <!-- Round the top-left corner. Ignored if imageViewEx_asCircle is used. -->
+        <attr name="imageViewEx_roundTopLeft" format="boolean" />
+        <!-- Round the top-right corner. Ignored if imageViewEx_asCircle is used. -->
+        <attr name="imageViewEx_roundTopRight" format="boolean" />
+        <!-- Round the bottom-right corner. Ignored if imageViewEx_asCircle is used. -->
+        <attr name="imageViewEx_roundBottomRight" format="boolean" />
+        <!-- Round the bottom-left corner. Ignored if imageViewEx_asCircle is used. -->
+        <attr name="imageViewEx_roundBottomLeft" format="boolean" />
+        <!-- Rounding border width-->
+        <attr name="imageViewEx_borderWidth" format="dimension" />
+        <!-- Rounding border color -->
+        <attr name="imageViewEx_borderColor" format="color" />
+        <attr name="placeholderImage" format="color|reference" />
+        <attr name="fadeDuration" format="integer" />
+    </declare-styleable>
+</resources>
