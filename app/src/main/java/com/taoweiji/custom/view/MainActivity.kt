@@ -2,6 +2,8 @@ package com.taoweiji.custom.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.facebook.drawee.view.SimpleDraweeView
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     var index = 0
@@ -10,6 +12,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+//        test_image_view.setOnClickListener {
+//            test_image_view.setImageResource(R.drawable.test1)
+//        }
+
 //        val colors = arrayOf(
 //            Color.BLACK,
 //            Color.BLUE,

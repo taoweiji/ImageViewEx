@@ -20,12 +20,12 @@ import android.widget.ImageView;
 
 public class RoundedCornerDrawable extends Drawable {
     private static final String TAG = "RoundedCornerDrawable";
-    private final Bitmap bitmap;
+    final Bitmap bitmap;
 
     Paint borderPaint;
     Paint bitmapPaint;
 
-    ImageView.ScaleType scaleType = ImageView.ScaleType.CENTER_CROP;
+    ImageView.ScaleType scaleType = ImageView.ScaleType.MATRIX;
     int borderWidth = 0;
     int borderColor = Color.WHITE;
     boolean circle = false;
@@ -173,9 +173,13 @@ public class RoundedCornerDrawable extends Drawable {
         RectF srcRectF = new RectF(0, 0, bitmap.getWidth(), bitmap.getHeight());
         RectF dstRectF = new RectF(0, 0, width, height);
         boolean isDrawBitmap = false;
-        if (this.scaleType == ImageView.ScaleType.MATRIX && this.imageMatrix != null) {
-            tmpCanvas.drawBitmap(bitmap, this.imageMatrix, bitmapPaint);
-            isDrawBitmap = true;
+        if (this.scaleType == ImageView.ScaleType.MATRIX) {
+            if (this.imageMatrix != null) {
+                tmpCanvas.drawBitmap(bitmap, this.imageMatrix, bitmapPaint);
+                isDrawBitmap = true;
+            } else {
+                matrix.setRectToRect(srcRectF, dstRectF, Matrix.ScaleToFit.CENTER);
+            }
         } else if (this.scaleType == ImageView.ScaleType.FIT_CENTER) {
             matrix.setRectToRect(srcRectF, dstRectF, Matrix.ScaleToFit.CENTER);
         } else if (this.scaleType == ImageView.ScaleType.FIT_START) {
@@ -215,6 +219,9 @@ public class RoundedCornerDrawable extends Drawable {
         } else {
             // 撑满宽度，高度居中裁剪
             int cutHeight = (int) (src.getWidth() / dstWHRate);
+            if (cutHeight < 1) {
+                cutHeight = 1;
+            }
             int startY = (src.getHeight() - cutHeight) / 2;
             return Bitmap.createBitmap(src, 0, startY, src.getWidth(), cutHeight);
         }

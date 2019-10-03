@@ -74,80 +74,80 @@
 
         <!-- Scale type of the placeholder image. Ignored if placeholderImage is not specified. -->
         <attr name="placeholderImageScaleType">
-            <enum name="none" value="-1" />
-            <enum name="fitXY" value="0" />
-            <enum name="fitStart" value="1" />
-            <enum name="fitCenter" value="2" />
-            <enum name="fitEnd" value="3" />
-            <enum name="center" value="4" />
-            <enum name="centerInside" value="5" />
+            <enum name="none" value="0" />
+            <enum name="fitXY" value="1" />
+            <enum name="fitStart" value="2" />
+            <enum name="fitCenter" value="3" />
+            <enum name="fitEnd" value="4" />
+            <enum name="center" value="5" />
+            <enum name="centerInside" value="7" />
             <enum name="centerCrop" value="6" />
-            <enum name="focusCrop" value="7" />
-            <enum name="fitBottomStart" value="8" />
+            <enum name="focusCrop" value="6" />
+            <enum name="fitBottomStart" value="2" />
         </attr>
 
         <!-- A drawable to be be used as a retry image. -->
         <attr name="retryImage" format="reference"/>
         <!-- Scale type of the retry image. Ignored if retryImage is not specified. -->
         <attr name="retryImageScaleType">
-            <enum name="none" value="-1" />
-            <enum name="fitXY" value="0" />
-            <enum name="fitStart" value="1" />
-            <enum name="fitCenter" value="2" />
-            <enum name="fitEnd" value="3" />
-            <enum name="center" value="4" />
-            <enum name="centerInside" value="5" />
+            <enum name="none" value="0" />
+            <enum name="fitXY" value="1" />
+            <enum name="fitStart" value="2" />
+            <enum name="fitCenter" value="3" />
+            <enum name="fitEnd" value="4" />
+            <enum name="center" value="5" />
+            <enum name="centerInside" value="7" />
             <enum name="centerCrop" value="6" />
-            <enum name="focusCrop" value="7" />
-            <enum name="fitBottomStart" value="8" />
+            <enum name="focusCrop" value="6" />
+            <enum name="fitBottomStart" value="2" />
         </attr>
 
         <!-- A drawable to be be used as a failure image. -->
         <attr name="failureImage" format="reference"/>
         <!-- Scale type of the failure image. Ignored if failureImage is not specified. -->
         <attr name="failureImageScaleType">
-            <enum name="none" value="-1" />
-            <enum name="fitXY" value="0" />
-            <enum name="fitStart" value="1" />
-            <enum name="fitCenter" value="2" />
-            <enum name="fitEnd" value="3" />
-            <enum name="center" value="4" />
-            <enum name="centerInside" value="5" />
+            <enum name="none" value="0" />
+            <enum name="fitXY" value="1" />
+            <enum name="fitStart" value="2" />
+            <enum name="fitCenter" value="3" />
+            <enum name="fitEnd" value="4" />
+            <enum name="center" value="5" />
+            <enum name="centerInside" value="7" />
             <enum name="centerCrop" value="6" />
-            <enum name="focusCrop" value="7" />
-            <enum name="fitBottomStart" value="8" />
+            <enum name="focusCrop" value="6" />
+            <enum name="fitBottomStart" value="2" />
         </attr>
 
         <!-- A drawable to be be used as a progress bar. -->
         <attr name="progressBarImage" format="reference"/>
         <!-- Scale type of the progress bar. Ignored if progressBarImage is not specified. -->
         <attr name="progressBarImageScaleType">
-            <enum name="none" value="-1" />
-            <enum name="fitXY" value="0" />
-            <enum name="fitStart" value="1" />
-            <enum name="fitCenter" value="2" />
-            <enum name="fitEnd" value="3" />
-            <enum name="center" value="4" />
-            <enum name="centerInside" value="5" />
+            <enum name="none" value="0" />
+            <enum name="fitXY" value="1" />
+            <enum name="fitStart" value="2" />
+            <enum name="fitCenter" value="3" />
+            <enum name="fitEnd" value="4" />
+            <enum name="center" value="5" />
+            <enum name="centerInside" value="7" />
             <enum name="centerCrop" value="6" />
-            <enum name="focusCrop" value="7" />
-            <enum name="fitBottomStart" value="8" />
+            <enum name="focusCrop" value="6" />
+            <enum name="fitBottomStart" value="2" />
         </attr>
         <!-- Progress bar Auto Rotate interval in milliseconds -->
         <attr name="progressBarAutoRotateInterval" format="integer"/>
 
         <!-- Scale type of the actual image. -->
         <attr name="actualImageScaleType">
-            <enum name="none" value="-1" />
-            <enum name="fitXY" value="0" />
-            <enum name="fitStart" value="1" />
-            <enum name="fitCenter" value="2" />
-            <enum name="fitEnd" value="3" />
-            <enum name="center" value="4" />
-            <enum name="centerInside" value="5" />
+            <enum name="none" value="0" />
+            <enum name="fitXY" value="1" />
+            <enum name="fitStart" value="2" />
+            <enum name="fitCenter" value="3" />
+            <enum name="fitEnd" value="4" />
+            <enum name="center" value="5" />
+            <enum name="centerInside" value="7" />
             <enum name="centerCrop" value="6" />
-            <enum name="focusCrop" value="7" />
-            <enum name="fitBottomStart" value="8" />
+            <enum name="focusCrop" value="6" />
+            <enum name="fitBottomStart" value="2" />
         </attr>
 
     </declare-styleable>

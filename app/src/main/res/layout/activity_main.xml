@@ -1,76 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_column="2"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <com.taoweiji.image.ImageViewEx
-        android:id="@+id/test_image_view"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"
-        android:background="@android:color/black"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
-    <com.taoweiji.image.ImageViewEx
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"
-        android:background="@android:color/black"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher"
-        app:imageViewEx_borderColor="@color/colorAccent"
-        app:imageViewEx_borderWidth="5dp" />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="match_parent"
+            android:layout_height="98dp"
+            android:scaleType="centerCrop"
+            app:placeholderImage="@drawable/test1" />
 
-    <com.taoweiji.image.ImageViewEx
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/colours"
-        android:padding="5dp"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher"
-        app:imageViewEx_asCircle="true" />
+<!--        <com.facebook.drawee.view.SimpleDraweeView-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:scaleType="centerInside"-->
+<!--            app:actualImageScaleType="centerInside"-->
+<!--            app:placeholderImage="@drawable/test1" />-->
 
-    <com.taoweiji.image.ImageViewEx
-        android:id="@+id/rounded_image_view"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"
-        android:scaleType="fitCenter"
-        android:src="@mipmap/ic_launcher"
-        app:imageViewEx_asCircle="true"
-        app:imageViewEx_borderColor="@color/colorAccent"
-        app:imageViewEx_borderWidth="5dp"
-        app:imageViewEx_roundBottomLeft="false"
-        app:imageViewEx_roundCornerRadius="20dp" />
+<!--        <com.taoweiji.image.ImageViewEx-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            app:imageViewEx_asCircle="true"-->
+<!--            app:placeholderImage="@color/colorAccent" />-->
 
-    <com.taoweiji.image.ImageViewEx
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"
-        android:scaleType="fitCenter"
-        android:src="@mipmap/ic_launcher"
-        app:imageViewEx_asCircle="false"
-        app:imageViewEx_borderColor="@color/colorAccent"
-        app:imageViewEx_borderWidth="5dp"
-        app:imageViewEx_roundBottomLeft="false"
-        app:imageViewEx_roundCornerRadius="20dp"
-        app:imageViewEx_roundTopRight="false" />
+<!--        <com.taoweiji.image.ImageViewEx-->
+<!--            android:id="@+id/test_image_view"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@mipmap/ic_launcher"-->
+<!--            app:fadeDuration="300"-->
+<!--            app:imageViewEx_asCircle="true" />-->
 
-    <com.taoweiji.image.ImageViewEx
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"
-        android:scaleType="fitCenter"
-        android:src="@mipmap/ic_launcher"
-        app:imageViewEx_asCircle="false"
-        app:imageViewEx_borderColor="@color/colorAccent"
-        app:imageViewEx_borderWidth="5dp"
-        app:imageViewEx_roundCornerRadius="20dp" />
-</GridLayout>
+<!--        <com.taoweiji.image.ImageViewEx-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:background="@android:color/black"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@mipmap/ic_launcher"-->
+<!--            app:imageViewEx_borderColor="@color/colorAccent"-->
+<!--            app:imageViewEx_borderWidth="5dp" />-->
+
+<!--        <com.taoweiji.image.ImageViewEx-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:background="@drawable/colours"-->
+<!--            android:padding="5dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@mipmap/ic_launcher"-->
+<!--            app:imageViewEx_asCircle="true" />-->
+
+<!--        <com.taoweiji.image.ImageViewEx-->
+<!--            android:id="@+id/rounded_image_view"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:src="@mipmap/ic_launcher"-->
+<!--            app:imageViewEx_asCircle="true"-->
+<!--            app:imageViewEx_borderColor="@color/colorAccent"-->
+<!--            app:imageViewEx_borderWidth="5dp"-->
+<!--            app:imageViewEx_roundBottomLeft="false"-->
+<!--            app:imageViewEx_roundCornerRadius="20dp" />-->
+
+<!--        <com.taoweiji.image.ImageViewEx-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:src="@mipmap/ic_launcher"-->
+<!--            app:imageViewEx_asCircle="false"-->
+<!--            app:imageViewEx_borderColor="@color/colorAccent"-->
+<!--            app:imageViewEx_borderWidth="5dp"-->
+<!--            app:imageViewEx_roundBottomLeft="false"-->
+<!--            app:imageViewEx_roundCornerRadius="20dp"-->
+<!--            app:imageViewEx_roundTopRight="false" />-->
+
+<!--        <com.taoweiji.image.ImageViewEx-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:src="@mipmap/ic_launcher"-->
+<!--            app:imageViewEx_asCircle="false"-->
+<!--            app:imageViewEx_borderColor="@color/colorAccent"-->
+<!--            app:imageViewEx_borderWidth="5dp"-->
+<!--            app:imageViewEx_roundCornerRadius="20dp" />-->
+    </LinearLayout>
+</ScrollView>
