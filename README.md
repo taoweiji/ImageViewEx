@@ -46,7 +46,7 @@ api 'com.taoweiji:SimpleDraweeView:1.0.0'
 
 
 ##### 效果
-![](example_01.png)
+<img src="example_01.png" style="zoom:30%;" />
 
 
 
