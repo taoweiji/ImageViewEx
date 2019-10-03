@@ -1,10 +1,12 @@
 package com.facebook.drawee.view;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 
 
@@ -58,21 +60,18 @@ public class SimpleDraweeView extends ImageViewExBase {
         if (actualImageScaleType != 0) {
             ScaleType scaleType = intToScaleType(actualImageScaleType);
             setScaleType(scaleType);
-        }else if (placeholderImageScaleType != 0){
+        } else if (placeholderImageScaleType != 0) {
             ScaleType scaleType = intToScaleType(placeholderImageScaleType);
             setScaleType(scaleType);
         }
         if (actualImageUri != null) {
             Uri uri = Uri.parse(actualImageUri);
-            if (uri.getScheme() != null && uri.getScheme().length() > 0) {
+            if (!TextUtils.isEmpty(uri.getScheme())) {
                 setImageURI(uri);
             }
         }
         if (actualImageResource != 0) {
             setImageResource(actualImageResource);
-        }
-        if (roundingBorderPadding != 0) {
-            setPadding(roundingBorderPadding, roundingBorderPadding, roundingBorderPadding, roundingBorderPadding);
         }
 
         typedArray.recycle();
@@ -80,8 +79,35 @@ public class SimpleDraweeView extends ImageViewExBase {
         setPlaceholderImageDrawable(placeholderImageTmp);
     }
 
-    public void setPlaceholderImage(int resId) {
-        setPlaceholderImageResource(resId);
+    @Override
+    public void setImageURI(Uri uri) {
+        if (uri == null) {
+            super.setImageURI(null);
+        } else if ("res".equalsIgnoreCase(uri.getScheme())) {
+            // 兼容 Fresco 的 res://xxx/xxx 的写法
+            uri = uri.buildUpon().scheme(ContentResolver.SCHEME_ANDROID_RESOURCE).build();
+            super.setImageURI(uri);
+        } else if (ContentResolver.SCHEME_ANDROID_RESOURCE.equals(uri.getScheme())) {
+            super.setImageURI(uri);
+        } else if (ContentResolver.SCHEME_CONTENT.equals(uri.getScheme()) || ContentResolver.SCHEME_FILE.equals(uri.getScheme())) {
+            super.setImageURI(uri);
+        } else {
+            setImageURI(uri.toString());
+        }
+    }
+
+    public void setImageURI(String uriString) {
+        loadHandler.load(this, uriString);
+    }
+
+    private static LoadHandler loadHandler;
+
+    public static void setLoadHandler(LoadHandler loadHandler) {
+        SimpleDraweeView.loadHandler = loadHandler;
+    }
+
+    public interface LoadHandler {
+        void load(SimpleDraweeView imageView, String url);
     }
 
     private ScaleType intToScaleType(int type) {
@@ -113,9 +139,4 @@ public class SimpleDraweeView extends ImageViewExBase {
         }
         return scaleType;
     }
-
-    public void setRoundedCorners(int roundedCornerRadius) {
-        setRoundedCornerRadius(roundedCornerRadius);
-    }
-
 }

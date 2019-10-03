@@ -1,22 +1,68 @@
 
 
-# 自定义图片组件 GlideImageView
+# 增强型ImageViewEx，提供圆角、边框功能、Fresco 替换其他图片框架方案
 
-1. 支持设置四个圆角
+[![Download](https://api.bintray.com/packages/taoweiji/maven/ImageViewEx/images/download.svg)](https://bintray.com/taoweiji/maven/ImageViewEx/_latestVersion)
+
+1. 提供替换Fresco框架的 SimpleDraweeView
 2. 支持设置占位图
-3. 支持圆圈
-4. 支持渐变显示
-5. 失败显示的图片
-6. 支持设置边框宽度，颜色
-7. 支持gif
-8. 支持渐进式图片显示
+3. 支持设置四个圆角
+4. 支持圆圈
+5. 支持设置边框宽度，颜色
+
+##### 引入项目
+
+```
+api 'com.taoweiji:ImageViewEx:1.0.0'
+```
+替换 Fresco 的 SimpleDraweeView 类
+```
+api 'com.taoweiji:SimpleDraweeView:1.0.0'
+```
+
+##### 使用
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.taoweiji.image.ImageViewEx
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_launcher"
+        app:imageViewEx_asCircle="false"
+        app:imageViewEx_borderColor="@color/colorAccent"
+        app:imageViewEx_borderWidth="5dp"
+        app:imageViewEx_roundBottomLeft="false"
+        app:imageViewEx_roundCornerRadius="20dp"
+        app:imageViewEx_roundTopRight="false" />
+</LinearLayout>
+
+```
+
+
+##### 效果
+[](example_01.png)
 
 
 
+## License
 
+    Copyright 2019 taoweiji
+    
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    
+       http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 
-https://www.fresco-cn.org/
-
-
-
-https://github.com/pungrue26/SelectableRoundedImageView/blob/master/library/src/com/joooonho/SelectableRoundedImageView.java
