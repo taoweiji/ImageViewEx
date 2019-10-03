@@ -46,7 +46,7 @@ api 'com.taoweiji:SimpleDraweeView:1.0.0'
 
 
 ##### 效果
-![Download](example_01.png)
+![](example_01.png)
 
 
 
