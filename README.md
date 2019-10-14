@@ -13,11 +13,11 @@
 ##### 引入项目
 
 ```
-api 'com.taoweiji:ImageViewEx:1.0.0'
+api 'com.taoweiji:ImageViewEx:1.2.0'
 ```
 替换 Fresco 的 SimpleDraweeView 类
 ```
-api 'com.taoweiji:SimpleDraweeView:1.0.0'
+api 'com.taoweiji:SimpleDraweeView:1.2.0'
 ```
 
 ##### 使用

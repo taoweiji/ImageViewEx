@@ -11,17 +11,18 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
-        <!--        <com.facebook.drawee.view.SimpleDraweeView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="98dp"-->
-        <!--            app:placeholderImage="@drawable/test1" />-->
+<!--        <com.taoweiji.image.ImageViewEx-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:scaleType="fitXY"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            android:src="@drawable/test1"/>-->
 
-        <!--        <com.facebook.drawee.view.SimpleDraweeView-->
-        <!--            android:layout_width="200dp"-->
-        <!--            android:layout_height="200dp"-->
-        <!--            android:scaleType="centerInside"-->
-        <!--            app:actualImageScaleType="centerInside"-->
-        <!--            app:placeholderImage="@drawable/test1" />-->
+<!--        <com.facebook.drawee.view.SimpleDraweeView-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="200dp"-->
+<!--            app:actualImageScaleType="centerCrop"-->
+<!--            app:placeholderImage="@drawable/test1" />-->
 
         <com.taoweiji.image.ImageViewEx
             android:layout_width="100dp"
@@ -30,6 +31,25 @@
             android:scaleType="centerCrop"
             app:imageViewEx_asCircle="true"
             app:placeholderImage="@color/colorAccent" />
+
+
+<!--        <ImageView-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/test1" />-->
+
+<!--        <com.taoweiji.image.ImageViewEx-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/test1"-->
+<!--            app:placeholderImage="@color/colorAccent" />-->
+
 
         <com.taoweiji.image.ImageViewEx
             android:id="@+id/test_image_view"
@@ -43,8 +63,9 @@
 
         <com.taoweiji.image.ImageViewEx
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:adjustViewBounds="false"
             android:background="@android:color/black"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher"
@@ -88,10 +109,10 @@
             app:imageViewEx_roundTopRight="false" />
 
         <com.taoweiji.image.ImageViewEx
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="100dp"
             android:layout_margin="10dp"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher"
             app:imageViewEx_asCircle="false"
             app:imageViewEx_borderColor="@color/colorAccent"

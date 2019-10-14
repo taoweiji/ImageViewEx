@@ -25,6 +25,7 @@ public abstract class ImageViewExBase extends ImageView {
     protected Drawable imageDrawable;
     private Drawable placeholderImage;
     protected int fadeDuration = 0;
+    protected boolean superInited = false;
 
     public ImageViewExBase(Context context) {
         this(context, null);
@@ -36,10 +37,11 @@ public abstract class ImageViewExBase extends ImageView {
 
     public ImageViewExBase(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        superInited = true;
     }
 
     public void setPlaceholderImageBitmap(Bitmap bm) {
-        setPlaceholderImageDrawable(RoundedCornerDrawable.fromBitmap(bm, getResources()));
+        setPlaceholderImageDrawable(RoundedCornerDrawable.fromBitmap(bm, this));
     }
 
     public void setPlaceholderImageResource(int resId) {
@@ -52,7 +54,7 @@ public abstract class ImageViewExBase extends ImageView {
     }
 
     public void setPlaceholderImageDrawable(Drawable drawable) {
-        this.placeholderImage = RoundedCornerDrawable.fromDrawable(drawable, getResources());
+        this.placeholderImage = RoundedCornerDrawable.fromDrawable(drawable, this);
         setImageDrawable(this.imageDrawable);
     }
 
@@ -65,7 +67,7 @@ public abstract class ImageViewExBase extends ImageView {
 
     @Override
     public void setImageBitmap(Bitmap bm) {
-        setImageDrawable(RoundedCornerDrawable.fromBitmap(bm, getResources()));
+        setImageDrawable(RoundedCornerDrawable.fromBitmap(bm, this));
     }
 
     @Override
@@ -80,7 +82,11 @@ public abstract class ImageViewExBase extends ImageView {
 
     @Override
     public void setImageDrawable(Drawable drawable) {
-        Drawable imageDrawableTmp = RoundedCornerDrawable.fromDrawable(drawable, getResources());
+        if(!superInited){
+            super.setImageDrawable(drawable);
+            return;
+        }
+        Drawable imageDrawableTmp = RoundedCornerDrawable.fromDrawable(drawable, this);
         boolean isSame = isSame(imageDrawableTmp, this.imageDrawable);
         this.imageDrawable = imageDrawableTmp;
         updateRoundedInfo();

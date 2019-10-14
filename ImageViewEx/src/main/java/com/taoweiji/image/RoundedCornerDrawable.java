@@ -15,12 +15,15 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.os.Build;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 public class RoundedCornerDrawable extends Drawable {
     private static final String TAG = "RoundedCornerDrawable";
     final Bitmap bitmap;
+    private final ImageView imageView;
 
     Paint borderPaint;
     Paint bitmapPaint;
@@ -37,8 +40,8 @@ public class RoundedCornerDrawable extends Drawable {
     Matrix imageMatrix;
 
 
-    public RoundedCornerDrawable(Bitmap bitmap, Resources r) {
-
+    public RoundedCornerDrawable(Bitmap bitmap, ImageView imageView) {
+        this.imageView = imageView;
         this.bitmap = bitmap;
         bitmapPaint = new Paint();
         bitmapPaint.setAntiAlias(true);
@@ -49,7 +52,7 @@ public class RoundedCornerDrawable extends Drawable {
         borderPaint.setColor(borderColor);
     }
 
-    public static Drawable fromDrawable(Drawable drawable, Resources resources) {
+    public static Drawable fromDrawable(Drawable drawable, ImageView imageView) {
         if (drawable == null) {
             return null;
         }
@@ -61,18 +64,18 @@ public class RoundedCornerDrawable extends Drawable {
         }
         Bitmap bitmap = drawableToBitmap(drawable);
         if (bitmap != null) {
-            return new RoundedCornerDrawable(bitmap, resources);
+            return new RoundedCornerDrawable(bitmap, imageView);
         } else {
             Log.w(TAG, "Failed to create bitmap from drawable!");
             return null;
         }
     }
 
-    public static Drawable fromBitmap(Bitmap bitmap, Resources resources) {
+    public static Drawable fromBitmap(Bitmap bitmap, ImageView imageView) {
         if (bitmap == null) {
             return null;
         }
-        return new RoundedCornerDrawable(bitmap, resources);
+        return new RoundedCornerDrawable(bitmap, imageView);
     }
 
     /**
@@ -83,8 +86,16 @@ public class RoundedCornerDrawable extends Drawable {
             return;
         }
         // 绘制边框
-        int width = getBounds().width();
-        int height = getBounds().height();
+        int viewWidth = getBounds().width();
+        int viewHeight = getBounds().height();
+        if (viewWidth == 1 && viewHeight == 1) {
+            viewWidth = bitmap.getWidth();
+            viewHeight = bitmap.getHeight();
+        } else if (viewHeight == 1) {
+            viewHeight = (int) (viewWidth / (double) bitmap.getWidth() * bitmap.getHeight());
+        } else if (viewWidth == 1) {
+            viewWidth = (int) (viewHeight / (double) bitmap.getHeight() * bitmap.getWidth());
+        }
 
 //        boolean isCircle = circle;
 //        if (!isCircle) {
@@ -96,46 +107,98 @@ public class RoundedCornerDrawable extends Drawable {
 //        }
 
         if (!circle) {
-            canvas.drawRoundRect(new RectF(0, 0, width, height), roundedCornerRadius, roundedCornerRadius, borderPaint);
+            canvas.drawRoundRect(new RectF(0, 0, viewWidth, viewHeight), roundedCornerRadius, roundedCornerRadius, borderPaint);
             // 如果部分是直角就绘制直角覆盖物
             if (!roundTopLeft) {
-                canvas.drawRect(0, 0, width / 2, height / 2, borderPaint);
+                canvas.drawRect(0, 0, viewWidth / 2, viewHeight / 2, borderPaint);
             }
             if (!roundTopRight) {
-                canvas.drawRect(width / 2, 0, width, height / 2, borderPaint);
+                canvas.drawRect(viewWidth / 2, 0, viewWidth, viewHeight / 2, borderPaint);
             }
             if (!roundBottomLeft) {
-                canvas.drawRect(0, height / 2, width / 2, height, borderPaint);
+                canvas.drawRect(0, viewHeight / 2, viewWidth / 2, viewHeight, borderPaint);
             }
             if (!roundBottomRight) {
-                canvas.drawRect(width / 2, height / 2, width, height, borderPaint);
+                canvas.drawRect(viewWidth / 2, viewHeight / 2, viewWidth, viewHeight, borderPaint);
             }
         } else {
             // 绘制圆圈
 //            canvas.drawCircle(getBounds().centerX(), getBounds().centerX(), getBounds().width() / 2, borderPaint);
-            if (width > height) {
+            if (viewWidth > viewHeight) {
                 // 绘制圆圈
-                canvas.drawCircle(getBounds().centerX(), getBounds().centerY(), height / 2, borderPaint);
+                canvas.drawCircle(getBounds().centerX(), getBounds().centerY(), viewHeight / 2, borderPaint);
             } else {
                 // 绘制圆圈
-                canvas.drawCircle(getBounds().centerX(), getBounds().centerY(), width / 2, borderPaint);
+                canvas.drawCircle(getBounds().centerX(), getBounds().centerY(), viewWidth / 2, borderPaint);
             }
         }
     }
 
+    @Override
+    public int getIntrinsicHeight() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            if (imageView != null && imageView.getAdjustViewBounds()){
+                return bitmap.getHeight();
+            }
+        }
+        return super.getIntrinsicHeight();
+    }
+
+    @Override
+    public int getIntrinsicWidth() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            if (imageView != null && imageView.getAdjustViewBounds()){
+                return bitmap.getWidth();
+            }
+        }
+        return super.getIntrinsicWidth();
+    }
 
     @Override
     public void draw(Canvas canvas) {
         drawBorder(canvas);
         int innerCornerRadius = roundedCornerRadius - borderWidth;
-
+        int viewWidth = getBounds().width();
+        int viewHeight = getBounds().height();
+        if (viewWidth == 1 && viewHeight == 1) {
+            viewWidth = bitmap.getWidth();
+            viewHeight = bitmap.getHeight();
+            new Exception("Be unable to handle android:layout_width=\"wrap_content\" and android:layout_height=\"wrap_content\"").printStackTrace();
+            if (imageView != null && imageView.getLayoutParams() != null && imageView.getLayoutParams().width == ViewGroup.LayoutParams.WRAP_CONTENT){
+                ViewGroup.LayoutParams layoutParams = imageView.getLayoutParams();
+                layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                imageView.setLayoutParams(layoutParams);
+                return;
+            }
+        } else if (viewHeight == 1) {
+            viewHeight = (int) (viewWidth / (double) bitmap.getWidth() * bitmap.getHeight());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                if (imageView != null && !imageView.getAdjustViewBounds()) {
+                    this.scaleType = ImageView.ScaleType.FIT_CENTER;
+                    imageView.setAdjustViewBounds(true);
+                }
+            }
+        } else if (viewWidth == 1) {
+            viewWidth = (int) (viewHeight / (double) bitmap.getHeight() * bitmap.getWidth());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                if (imageView != null && !imageView.getAdjustViewBounds()) {
+                    this.scaleType = ImageView.ScaleType.FIT_CENTER;
+                    imageView.setAdjustViewBounds(true);
+                }
+            }
+        }
 
         // 绘制边框
-        int width = getBounds().width() - 2 * borderWidth;
-        int height = getBounds().height() - 2 * borderWidth;
+        int width = viewWidth - 2 * borderWidth;
+        int height = viewHeight - 2 * borderWidth;
         int centerX = width / 2;
         int centerY = height / 2;
         Rect rect = new Rect(0, 0, width, height);
+
+        if (width < 0 || height < 0) {
+            Log.e("ImageViewEx", "viewWidth < 2 * borderWidth");
+            return;
+        }
 
         Bitmap tmpBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas tmpCanvas = new Canvas(tmpBitmap);
