@@ -2,7 +2,8 @@
 
 # 增强型ImageViewEx，提供圆角、边框功能、Fresco 替换其他图片框架方案
 
-[![Download](https://api.bintray.com/packages/taoweiji/maven/ImageViewEx/images/download.svg)](https://bintray.com/taoweiji/maven/ImageViewEx/_latestVersion)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.taoweiji.image/image)](https://search.maven.org/search?q=io.github.taoweiji.image)
+
 
 1. 提供替换Fresco框架的 SimpleDraweeView
 2. 支持设置占位图
@@ -13,11 +14,11 @@
 ##### 引入项目
 
 ```
-api 'com.taoweiji:ImageViewEx:1.2.0'
+api 'io.github.taoweiji.image:ImageViewEx:+'
 ```
 替换 Fresco 的 SimpleDraweeView 类
 ```
-api 'com.taoweiji:SimpleDraweeView:1.2.0'
+api 'io.github.taoweiji.image:SimpleDraweeView:+'
 ```
 
 ##### 使用
