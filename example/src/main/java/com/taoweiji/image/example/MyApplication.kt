@@ -1,4 +1,4 @@
-package com.taoweiji.custom.view
+package com.taoweiji.image.example
 
 import android.app.Application
 import com.facebook.drawee.view.SimpleDraweeView

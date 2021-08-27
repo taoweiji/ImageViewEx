@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context="com.taoweiji.image.example.MainActivity">
 
 <!--        <com.taoweiji.image.ImageViewEx-->
 <!--            android:layout_width="wrap_content"-->

@@ -1,4 +1,4 @@
-package com.taoweiji.custom.view
+package com.taoweiji.image.example
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
