@@ -1,16 +1,5 @@
 apply plugin: 'maven'
 
-Properties properties = new Properties()
-InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
-properties.load(inputStream)
-ext {
-    OSSRH_USERNAME = properties.getProperty('OSSRH_USERNAME')
-    OSSRH_PASSWORD = properties.getProperty('OSSRH_PASSWORD')
-    POM_DEVELOPER_ID = properties.getProperty('POM_DEVELOPER_ID')
-    POM_DEVELOPER_NAME = properties.getProperty('POM_DEVELOPER_NAME')
-    POM_DEVELOPER_EMAIL = properties.getProperty('POM_DEVELOPER_EMAIL')
-}
-
 group = GROUP_ID
 version = VERSION_NAME
 
